@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -10,6 +11,8 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(bodyParser.json());
 
+app.use(cors());
+app.options('*', cors());
 // MongoDB connection
 mongoose.connect('mongodb://mahmoud2:kfZAKtBLj4Rpxtcb@ac-k0bfazz-shard-00-00.8hqkdcy.mongodb.net:27017,ac-k0bfazz-shard-00-01.8hqkdcy.mongodb.net:27017,ac-k0bfazz-shard-00-02.8hqkdcy.mongodb.net:27017/?ssl=true&replicaSet=atlas-7hgvqy-shard-0&authSource=admin&retryWrites=true&w=majority&appName=mern-ordring-app', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected'))
